@@ -46,26 +46,22 @@ expected genotypes under no double reduction. Since markers were already filtere
 \code{FALSE}, no output is produced}
 }
 \description{
-Function to import datasets from polymapR
+Function to import datasets from polymapR.
 }
-\examples{
-require(polymapR)
-data("screened_data3")
-mappoly.data <- import_data_from_polymapR(screened_data3, 4)
-plot(mappoly.data)
-
+\details{
+See examples at \url{https://rpubs.com/mmollin/tetra_mappoly_vignette}.
 }
 \references{
 Bourke PM et al: (2019) PolymapR — linkage analysis and genetic map 
     construction from F1 populations of outcrossing polyploids. 
     _Bioinformatics_ 34:3496–3502.
-    \url{https://doi.org/10.1093/bioinformatics/bty1002}
+    \doi{10.1093/bioinformatics/bty1002}
 
     Mollinari, M., and Garcia, A.  A. F. (2019) Linkage
     analysis and haplotype phasing in experimental autopolyploid
     populations with high ploidy level using hidden Markov
     models, _G3: Genes, Genomes, Genetics_. 
-    \url{https://doi.org/10.1534/g3.119.400378}
+    \doi{10.1534/g3.119.400378}
 }
 \author{
 Marcelo Mollinari \email{mmollin@ncsu.edu}

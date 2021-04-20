@@ -17,7 +17,7 @@
 #'     analysis and haplotype phasing in experimental autopolyploid
 #'     populations with high ploidy level using hidden Markov
 #'     models, _G3: Genes, Genomes, Genetics_. 
-#'     \url{https://doi.org/10.1534/g3.119.400378}
+#'     \doi{10.1534/g3.119.400378}
 #'     
 #' @export
 #' @importFrom graphics barplot layout mtext legend 
@@ -36,7 +36,7 @@ plot_mrk_info<-function(input.data, mrk)
       stop(mrk, " exceeds the number of markers in the dataset")
     mrk<-input.data$mrk.names[mrk]
   }
-  oldpar <- par(mar = c(2,2,5,2))
+  oldpar <- par(mar = c(2,2,5,2), bg = "lightgray")
   on.exit(par(oldpar))
   if(!mrk%in%input.data$mrk.names)
     stop(deparse(substitute(mrk)), " is not present in ", deparse(substitute(input.data)), " dataset")

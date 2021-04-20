@@ -1,6 +1,8 @@
 #' Import data from polymapR
 #'
-#' Function to import datasets from polymapR
+#' Function to import datasets from polymapR. 
+#' 
+#' See examples at \url{https://rpubs.com/mmollin/tetra_mappoly_vignette}.
 #'
 #' @param input.data  a \code{polymapR} dataset
 #' @param ploidy the ploidy level     
@@ -19,12 +21,6 @@
 #'     \code{FALSE}.
 #' @param verbose if \code{TRUE} (default), the current progress is shown; if
 #'     \code{FALSE}, no output is produced
-#'     
-#' @examples
-#' require(polymapR)
-#' data("screened_data3")
-#' mappoly.data <- import_data_from_polymapR(screened_data3, 4)
-#' plot(mappoly.data)
 #'
 #' @author Marcelo Mollinari \email{mmollin@ncsu.edu}
 #'
@@ -32,13 +28,13 @@
 #'     Bourke PM et al: (2019) PolymapR — linkage analysis and genetic map 
 #'     construction from F1 populations of outcrossing polyploids. 
 #'     _Bioinformatics_ 34:3496–3502.
-#'     \url{https://doi.org/10.1093/bioinformatics/bty1002}
+#'     \doi{10.1093/bioinformatics/bty1002}
 #' 
 #'     Mollinari, M., and Garcia, A.  A. F. (2019) Linkage
 #'     analysis and haplotype phasing in experimental autopolyploid
 #'     populations with high ploidy level using hidden Markov
 #'     models, _G3: Genes, Genomes, Genetics_. 
-#'     \url{https://doi.org/10.1534/g3.119.400378}
+#'     \doi{10.1534/g3.119.400378}
 #'     
 #' @export import_data_from_polymapR
 #' @importFrom reshape2 acast
@@ -80,11 +76,11 @@ import_data_from_polymapR <- function(input.data,
     if(is.null(pardose)) 
       stop("provide parental dosage.")
     rownames(pardose) <- pardose$MarkerName
-    dat<-input.data[c(2,3,5:(5 + ploidy))]
-    p1 <- unique(grep(pattern = parent1, dat[,"SampleName"], value = TRUE))
-    p2 <- unique(grep(pattern = parent2, dat[,"SampleName"], value = TRUE))
+    dat<-input.data[,c("MarkerName", "SampleName",paste0("P", 0:ploidy))]
+    p1 <- unique(sapply(parent1, function(x) unique(grep(pattern = x, dat[,"SampleName"], value = TRUE))))
+    p2 <- unique(sapply(parent2, function(x) unique(grep(pattern = x, dat[,"SampleName"], value = TRUE))))
     if(is.null(offspring)){
-      offspring <- setdiff(unique(dat[,"SampleName"]), c(p1, p2))    
+      offspring <- setdiff(as.character(unique(dat[,"SampleName"])), c(p1, p2))    
     } else {
       offspring <- unique(grep(pattern = offspring, dat[,"SampleName"], value = TRUE))
     }
@@ -201,32 +197,13 @@ import_data_from_polymapR <- function(input.data,
 #'
 #' Function to import phased map lists from polymapR
 #' 
+#' See examples at \url{https://rpubs.com/mmollin/tetra_mappoly_vignette}.
+#' 
 #' @param maplist a list of phased maps obtained using function 
 #' \code{create_phased_maplist} from package \code{polymapR} 
 #' @param mappoly.data a dataset used to obtain \code{maplist}, 
 #' converted into class \code{mappoly.data}
 #' @param ploidy the ploidy level     
-#'     
-#' @examples
-#' require(polymapR)
-#' ## Loading polymapR example
-#' data("integrated.maplist", "screened_data3", "marker_assignments_P1","marker_assignments_P2")
-#' maplist <- create_phased_maplist(maplist = integrated.maplist,
-#'                                  dosage_matrix.conv = screened_data3,
-#'                                  marker_assignment.1=marker_assignments_P1,
-#'                                  marker_assignment.2=marker_assignments_P2,
-#'                                  ploidy = 4)
-#'  ## Importing polymapR dataset                                
-#'  mappoly.data <- import_data_from_polymapR(screened_data3, 4)
-#'  plot(mappoly.data) 
-#'  
-#'  ## Importing polymapR phased maplist
-#'  mappoly.maplist <- import_phased_maplist_from_polymapR(maplist, mappoly.data)
-#'  plot_map_list(mappoly.maplist)
-#'  ## plot phased map
-#'  plot(mappoly.maplist[[1]])
-#'  ## plot a segment of phased map (from 0 to 20 cM)
-#'  plot(mappoly.maplist[[1]], mrk.names = TRUE, left.lim = 0, right.lim = 20, cex = .7)
 #'
 #' @author Marcelo Mollinari \email{mmollin@ncsu.edu}
 #'
@@ -234,13 +211,13 @@ import_data_from_polymapR <- function(input.data,
 #'     Bourke PM et al: (2019) PolymapR — linkage analysis and genetic map 
 #'     construction from F1 populations of outcrossing polyploids. 
 #'     _Bioinformatics_ 34:3496–3502.
-#'     \url{https://doi.org/10.1093/bioinformatics/bty1002}
+#'     \doi{10.1093/bioinformatics/bty1002}
 #' 
 #'     Mollinari, M., and Garcia, A.  A. F. (2019) Linkage
 #'     analysis and haplotype phasing in experimental autopolyploid
 #'     populations with high ploidy level using hidden Markov
 #'     models, _G3: Genes, Genomes, Genetics_. 
-#'     \url{https://doi.org/10.1534/g3.119.400378}
+#'     \doi{10.1534/g3.119.400378}
 #'     
 #' @export import_phased_maplist_from_polymapR
 import_phased_maplist_from_polymapR <- function(maplist, 

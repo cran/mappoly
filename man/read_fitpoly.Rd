@@ -47,7 +47,7 @@ If there is one observation per parent, both options will yield the same results
 is smaller than \code{thresh.parent.geno}, the marker is discarded.}
 
 \item{prob.thres}{threshold probability to assign a dosage to offspring. If the probability 
-is smaller than \code{thresh.parent.geno}, the data point is converted to 'NA'.}
+is smaller than \code{prob.thres}, the data point is converted to 'NA'.}
 
 \item{file.type}{indicates whether the characters in the input file are separated by 
 'white spaces' ("table") or by commas ("csv").}
@@ -109,7 +109,7 @@ plot_mrk_info(fitpoly.dat, 37)
 Voorrips, R.E., Gort, G. & Vosman, B. (2011) Genotype calling 
     in tetraploid species from bi-allelic marker data using mixture 
     models. _BMC Bioinformatics_.
-    \url{https://doi.org/10.1186/1471-2105-12-172}
+    \doi{10.1186/1471-2105-12-172}
 }
 \author{
 Marcelo Mollinari, \email{mmollin@ncsu.edu}

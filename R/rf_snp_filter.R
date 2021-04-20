@@ -20,7 +20,7 @@
 #'
 #' @param thresh.rf threshold for recombination fractions (default = 0.15) 
 #'
-#' @param probs indicates the probability corresponding to the filtering quantiles. (defaul = c(0.05, 1))
+#' @param probs indicates the probability corresponding to the filtering quantiles. (default = c(0.05, 1))
 #' 
 #' @param ncpus number of parallel processes (i.e. cores) to spawn (default = 1)
 #' 
@@ -55,7 +55,7 @@
 #'     analysis and haplotype phasing in experimental autopolyploid
 #'     populations with high ploidy level using hidden Markov
 #'     models, _G3: Genes, Genomes, Genetics_. 
-#'     \url{https://doi.org/10.1534/g3.119.400378}
+#'     \doi{10.1534/g3.119.400378}
 #'
 #' @export rf_snp_filter
 #' @importFrom ggplot2 ggplot geom_histogram aes scale_fill_manual xlab ggtitle

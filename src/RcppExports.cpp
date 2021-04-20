@@ -5,6 +5,18 @@
 
 using namespace Rcpp;
 
+// vcf_get_probabilities
+Rcpp::List vcf_get_probabilities(Rcpp::StringMatrix& mat, int pl_pos);
+RcppExport SEXP _mappoly_vcf_get_probabilities(SEXP matSEXP, SEXP pl_posSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::StringMatrix& >::type mat(matSEXP);
+    Rcpp::traits::input_parameter< int >::type pl_pos(pl_posSEXP);
+    rcpp_result_gen = Rcpp::wrap(vcf_get_probabilities(mat, pl_pos));
+    return rcpp_result_gen;
+END_RCPP
+}
 // vcf_transform_dosage
 Rcpp::NumericMatrix vcf_transform_dosage(Rcpp::StringMatrix& mat, int gt_pos);
 RcppExport SEXP _mappoly_vcf_transform_dosage(SEXP matSEXP, SEXP gt_posSEXP) {
@@ -45,7 +57,9 @@ END_RCPP
 RcppExport SEXP calc_genoprob(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP calc_genoprob_prior(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP calc_genprob_haplo(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+RcppExport SEXP calc_genprob_haplo_highprec(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP est_haplotype_map(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+RcppExport SEXP est_haplotype_map_highprec(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP est_map_hmm(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP est_map_hmm_highprec(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP get_counts_one_parent_cpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -55,13 +69,16 @@ RcppExport SEXP pairwise_rf_estimation_prob(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, 
 RcppExport SEXP poly_hmm_est_CPP(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_mappoly_vcf_get_probabilities", (DL_FUNC) &_mappoly_vcf_get_probabilities, 2},
     {"_mappoly_vcf_transform_dosage", (DL_FUNC) &_mappoly_vcf_transform_dosage, 2},
     {"_mappoly_vcf_get_ploidy", (DL_FUNC) &_mappoly_vcf_get_ploidy, 2},
     {"_mappoly_vcf_get_depth", (DL_FUNC) &_mappoly_vcf_get_depth, 2},
     {"calc_genoprob",               (DL_FUNC) &calc_genoprob,                7},
     {"calc_genoprob_prior",         (DL_FUNC) &calc_genoprob_prior,         12},
     {"calc_genprob_haplo",          (DL_FUNC) &calc_genprob_haplo,           8},
+    {"calc_genprob_haplo_highprec", (DL_FUNC) &calc_genprob_haplo_highprec,  8},
     {"est_haplotype_map",           (DL_FUNC) &est_haplotype_map,            9},
+    {"est_haplotype_map_highprec",  (DL_FUNC) &est_haplotype_map_highprec,   9},
     {"est_map_hmm",                 (DL_FUNC) &est_map_hmm,                  8},
     {"est_map_hmm_highprec",        (DL_FUNC) &est_map_hmm_highprec,         8},
     {"get_counts_one_parent_cpp",   (DL_FUNC) &get_counts_one_parent_cpp,    6},

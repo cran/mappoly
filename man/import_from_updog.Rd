@@ -69,6 +69,7 @@ This function creates an object of class \code{mappoly.data}
 }
 \examples{
 \donttest{
+if(requireNamespace("updog", quietly = TRUE)){
 library("updog")
 data("uitdewilligen")
 mout = multidog(refmat = t(uitdewilligen$refmat), 
@@ -82,6 +83,7 @@ mydata = import_from_updog(mout)
 mydata
 plot(mydata)
 }
+}
 
 }
 \references{
@@ -89,7 +91,7 @@ Mollinari, M., and Garcia, A.  A. F. (2019) Linkage
     analysis and haplotype phasing in experimental autopolyploid
     populations with high ploidy level using hidden Markov
     models, _G3: Genes, Genomes, Genetics_. 
-    \url{https://doi.org/10.1534/g3.119.400378}
+    \doi{10.1534/g3.119.400378}
 }
 \author{
 Gabriel Gesteira, \email{gabrielgesteira@usp.br}

@@ -66,11 +66,13 @@ Version 3, at
     s1 <- make_seq_mappoly(hexafake, 1:20)
     t1 <- est_pairwise_rf(s1, ncpus = 1)
     m1 <- rf_list_to_matrix(t1)
-    plot(m1, ord = rownames(get_genomic_order(s1)))
+    o1 <- get_genomic_order(s1)
+    s.go <- make_seq_mappoly(o1)
+    plot(m1, ord = s.go$seq.mrk.names)
     mds.ord <- mds_mappoly(m1)
     plot(mds.ord)
     so <- make_seq_mappoly(mds.ord)
-    plot(m1, ord = rownames(get_genomic_order(so)))
+    plot(m1, ord = so$seq.mrk.names)
     plot(so$seq.num ~ I(so$sequence.pos/1e6), 
          xlab = "Genome Position",
          ylab = "MDS position")
@@ -80,7 +82,7 @@ Version 3, at
 Preedy, K. F., & Hackett, C. A. (2016). A rapid marker ordering approach for
  high-density genetic linkage maps in experimental autotetraploid populations
  using multidimensional scaling. _Theoretical and Applied Genetics_, 129(11),
- 2117-2132. \url{https://doi.org/10.1007/s00122-016-2761-8}
+ 2117-2132. \doi{10.1007/s00122-016-2761-8}
 }
 \author{
 Marcelo Mollinari, \email{mmollin@ncsu.edu} mostly adapted from MDSmap 
