@@ -7,32 +7,32 @@
 make_pairs_mappoly(input.twopt, input.seq)
 }
 \arguments{
-\item{input.twopt}{an object of class \code{poly.est.two.pts.pairwise}}
+\item{input.twopt}{an object of class \code{mappoly.twopt}}
 
 \item{input.seq}{an object of class \code{mappoly.sequence}, with 
 a sequence of markers contained in \code{input.twopt}}
 }
 \value{
-an object of class \code{poly.est.two.pts.pairwise} which is a
+an object of class \code{mappoly.twopt} which is a
  subset of \code{input.twopt}. 
  See \code{\link[mappoly]{est_pairwise_rf}} for details
 }
 \description{
-Get a subset of an object of class \code{poly.est.two.pts.pairwise} (i.e.
+Get a subset of an object of class \code{mappoly.twopt} or \code{mappoly.twopt2} (i.e.
  recombination fraction) and LOD score statistics for all possible linkage
  phase combinations based on a sequence of markers.
 }
 \examples{
     ## selecting some markers along the genome
-    some.mrk<-make_seq_mappoly(hexafake, seq(1, 1500, 30))
-    all.pairs<-est_pairwise_rf(input.seq = some.mrk)
-    mat.full<-rf_list_to_matrix(input.twopt = all.pairs)
+    some.mrk <- make_seq_mappoly(hexafake, seq(1, 1500, 30))
+    all.pairs <- est_pairwise_rf(input.seq = some.mrk)
+    mat.full <- rf_list_to_matrix(input.twopt = all.pairs)
     plot(mat.full)
     
     ## selecting two-point information for chromosome 1
-    mrks.1<-make_seq_mappoly(hexafake, names(which(some.mrk$sequence==1)))
-    p1<-make_pairs_mappoly(input.seq = mrks.1, input.twopt = all.pairs)
-    m1<-rf_list_to_matrix(input.twopt = p1)
+    mrks.1 <- make_seq_mappoly(hexafake, names(which(some.mrk$chrom == 1)))
+    p1 <- make_pairs_mappoly(input.seq = mrks.1, input.twopt = all.pairs)
+    m1 <- rf_list_to_matrix(input.twopt = p1)
     plot(m1, main.text = "LG1")
    
 }

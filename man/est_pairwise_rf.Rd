@@ -7,6 +7,7 @@
 est_pairwise_rf(
   input.seq,
   count.cache = NULL,
+  count.matrix = NULL,
   ncpus = 1L,
   mrk.pairs = NULL,
   n.batches = 1L,
@@ -25,15 +26,16 @@ pre-computed genotype frequencies, obtained with
 \code{\link[mappoly]{cache_counts_twopt}}. If \code{NULL} (default),
 genotype frequencies are internally loaded.}
 
+\item{count.matrix}{similar to \code{count.cache}, but in matrix format. 
+Mostly for internal use.}
+
 \item{ncpus}{Number of parallel processes (cores) to spawn (default = 1)}
 
 \item{mrk.pairs}{a matrix of dimensions 2*N, containing N
 pairs of markers to be analyzed. If \code{NULL} (default), all pairs are
 considered}
 
-\item{n.batches}{The number of batches of marker pairs that should be analyzed 
-in parallel. Using \code{n.batches > 1}, will usually result in more processing 
-time. However, it will require less memory. See examples.}
+\item{n.batches}{deprecated. Not available on MAPpoly 0.3.0 or higher}
 
 \item{est.type}{Indicates whether to use the discrete ("disc") or the probabilistic ("prob") dosage scoring 
 when estimating the two-point recombination fractions.}
@@ -51,7 +53,7 @@ be either PSOCK (default) or FORK.}
 \item{tol}{the desired accuracy. See \code{optimize()} for details}
 }
 \value{
-An object of class \code{poly.est.two.pts.pairwise} which
+An object of class \code{mappoly.twopt} which
     is a list  containing the following components:
     \item{data.name}{name of the object of class
         \code{mappoly.data} with the raw data}
@@ -66,7 +68,7 @@ An object of class \code{poly.est.two.pts.pairwise} which
     column indicates the LOD Score in relation to the most likely linkage 
     phase configuration. The second column shows the estimated recombination 
     fraction for each configuration, and the third indicates the LOD Score 
-    comparing the likelihood under no linkage (r=0.5) with the estimated 
+    comparing the likelihood under no linkage (r = 0.5) with the estimated 
     recombination fraction (evidence of linkage).}
     \code{chisq.pval.thres}{threshold used to perform the segregation tests}
     \code{chisq.pval}{p-values associated with the performed segregation tests}
@@ -83,7 +85,7 @@ possible linkage phase configurations and associated LOD Scores.
   unique.mrks <- make_seq_mappoly(red.mrk)
   all.pairs <- est_pairwise_rf(input.seq = unique.mrks,
                                ncpus = 1, 
-                               verbose=TRUE)
+                               verbose = TRUE)
    all.pairs
    plot(all.pairs, 20, 21)
    mat <- rf_list_to_matrix(all.pairs)

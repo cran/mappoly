@@ -1,14 +1,17 @@
-[![Travis Build Status](https://travis-ci.org/mmollina/MAPpoly.svg?branch=master)](https://travis-ci.org/mmollina/MAPpoly) 
+[![R-CMD-check](https://github.com/mmollina/MAPpoly/workflows/R-CMD-check/badge.svg)](https://github.com/mmollina/mappoly/actions)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/mmollina/mappoly?branch=master&svg=true)](https://ci.appveyor.com/project/mmollina/mappoly)
-[![Development](https://img.shields.io/badge/development-active-blue.svg)](https://img.shields.io/badge/development-active-blue.svg)
+![Development](https://img.shields.io/badge/development-active-blue.svg)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![codecov](https://codecov.io/github/mmollina/MAPpoly/branch/master/graphs/badge.svg)](https://codecov.io/github/mmollina/MAPpoly)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/mappoly)](https://cran.r-project.org/package=mappoly)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/mappoly)](https://cran.r-project.org/package=mappoly)
+[![R-universe PolyVerse Status Badge](https://polyploids.r-universe.dev/badges/mappoly)](https://polyploids.r-universe.dev/badges/mappoly)
+[![CRAN_monthly_downloads](https://cranlogs.r-pkg.org/badges/mappoly)](https://cranlogs.r-pkg.org/badges/mappoly)
 
-![](https://raw.githubusercontent.com/mmollina/MAPpoly/master/mappoly_hexsticker.png)
+<!-- ![](https://raw.githubusercontent.com/mmollina/MAPpoly/master/mappoly_hexsticker.png) -->
 
-MAPpoly (v. 0.2.1) is an R package to construct genetic maps in autopolyploids with even ploidy levels. In its current version, MAPpoly can handle ploidy levels up to 8 when using hidden Markov models (HMM), and up to 12 when using the two-point simplification. When dealing with large numbers of markers (> 10,000), we strongly recommend using high-performance computation. 
+# MAPpoly <img src="https://raw.githubusercontent.com/mmollina/MAPpoly/main/hex.png" align="right" width="150" />
+
+MAPpoly (v. 0.3.0) is an R package to construct genetic maps in autopolyploids with even ploidy levels. In its current version, MAPpoly can handle ploidy levels up to 8 when using hidden Markov models (HMM), and up to 12 when using the two-point simplification. When dealing with large numbers of markers (> 10,000), we strongly recommend using high-performance computation. 
 
 ![](https://raw.githubusercontent.com/mmollina/MAPpoly/master/mappoly.gif)
 
@@ -60,7 +63,15 @@ devtools::install_github("mmollina/mappoly", dependencies=TRUE)
 
 For further QTL analysis, we recommend our [QTLpoly](https://github.com/guilherme-pereira/QTLpoly) package. QTLpoly is an under development software to map quantitative trait loci (QTL) in full-sib families of outcrossing autopolyploid species based on a random-effect multiple QTL model [Pereira et al. 2020](https://doi.org/10.1534/genetics.120.303080). 
 
+
+# Workflow
+![](https://raw.githubusercontent.com/mmollina/MAPpoly/main/MAPpoly_workflow.png)
+
 # Vignettes
+* To access the MAPpoly vignette from R, use
+   ```R
+   vignette("mappoly_startguide")
+   ```
 * [Building a genetic map in a tetraploid potato full-sib population using MAPpoly](https://rpubs.com/mmollin/tetra_mappoly_vignette)
 * [Building a genetic map in an hexaploid full-sib population using MAPpoly](https://mmollina.github.io/tutorials/hexa_fake/haxaploid_map_construction.html)
 * Real datasets
@@ -76,6 +87,20 @@ For further QTL analysis, we recommend our [QTLpoly](https://github.com/guilherm
    
   
 # Related software
+
+* [Polyverse](https://polyploids.r-universe.dev) - the polyploid R universe (a Lindsay Clark's initiative)
+```R
+# Enable this universe
+options(repos = c(
+    polyploids = 'https://polyploids.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+
+# Install some packages
+install.packages(mappoly')
+```
+
+* Variant Calling
+  *  [GBSapp: An automated pipeline for variant calling and filtering.](https://github.com/bodeolukolu/GBSapp)
 
 * Simulations
   * [PedigreeSim: Simulation of genetic marker data in diploid and polyploid pedigreed populations.](https://www.wur.nl/en/show/Software-PedigreeSim.htm)
@@ -99,8 +124,12 @@ For further QTL analysis, we recommend our [QTLpoly](https://github.com/guilherm
   * [PolyOriginR:haplotype reconstruction in polyploid multiparental populations](https://github.com/chaozhi/PolyOriginR)
 
 * QTL mapping
-  * [QTLpoly: QTL mapping in full-sib families of outcrossing autopolyploid species based on a random-effect multiple QTL model](https://github.com/guilherme-pereira/QTLpoly)
+  * [QTLpoly: QTL mapping in full-sib families of outcrossing autopolyploid species based on a random-effect multiple QTL model](https://cran.r-project.org/package=qtlpoly)
   * [diaQTL: QTL analysis of diploid and autotetraploid diallel populations](https://github.com/jendelman/diaQTL)
+  * [polyqtlR: QTL analysis and exploration of meiotic patterns in autopolyploid bi-parental F1 populations.](https://cran.r-project.org/package=polyqtlR)
+
+* Visualization
+  * [VIEWpoly: integrate, visualize and explore results from genetic analysis, together with genomic information for autopolyploids](https://cran.r-project.org/package=viewpoly)
 
 # Miscellaneous
 * [Supplementary scripts for Mollinari and Garcia (2019)](https://github.com/mmollina/Autopolyploid_Linkage)
@@ -108,14 +137,16 @@ For further QTL analysis, we recommend our [QTLpoly](https://github.com/guilherm
 
 # Articles referencing MAPpoly
 
-1. High-Resolution Linkage Map and QTL Analyses of Fruit Firmness in Autotetraploid Blueberry ([Cappai et al., 2020](https://doi.org/10.3389/fpls.2020.562171))
-2. Quantitative trait locus mapping for common scab resistance in a tetraploid potato full-sib population. ([Pereira et al., 2020](https://doi.org/10.1101/2020.10.24.353557))
-3. The recombination landscape and multiple QTL mapping in a Solanum tuberosum cv.'Atlantic'-derived F1 population. ([Pereira et al., 2020](https://doi.org/10.1101/2020.08.24.265397))
-4. When a phenotype is not the genotype: Implications of phenotype misclassification and pedigree errors in genomics-assisted breeding of sweetpotato *Ipomoea batatas* (L.) Lam.([Gemenet et al., 2020](https://doi.org/10.1101/747469 ))
-5. Quantitative trait loci and differential gene expression analyses reveal the genetic basis for negatively associated beta-carotene and starch content in hexaploid sweetpotato [Ipomoea batatas (L.) Lam.] ([Gemenet et al., 2020](https://doi.org/10.1007/s00122-019-03437-7))
-6. Multiple QTL Mapping in Autopolyploids: A Random-Effect Model Approach with Application in a Hexaploid Sweetpotato Full-Sib Population. ([Pereira et al., 2020](https://doi.org/10.1534/genetics.120.303080))
-7. Unraveling the Hexaploid Sweetpotato Inheritance Using Ultra-Dense Multilocus Mapping. ([Mollinari et al., 2020](https://doi.org/10.1534/g3.119.400620)).
+1. Using probabilistic genotypes in linkage analysis of polyploids. ([Liao et al., 2021](https://doi.org/10.1007/s00122-021-03834-x))
+2. Discovery of a major QTL for root-knot nematode *Meloidogyne incognita* resistance in cultivated sweetpotato *Ipomoea batatas*. ([Oloka, et al., 2021](https://doi.org/10.1007/s00122-021-03797-z))
+3. Quantitative trait locus mapping for common scab resistance in a tetraploid potato full-sib population. ([Pereira et al., 2021](https://doi.org/10.1094/PDIS-10-20-2270-RE))
+4. The recombination landscape and multiple QTL mapping in a Solanum tuberosum cv.'Atlantic'-derived F1 population. ([Pereira et al., 2021](https://doi.org/10.1101/2020.08.24.265397))
+5. High-Resolution Linkage Map and QTL Analyses of Fruit Firmness in Autotetraploid Blueberry ([Cappai et al., 2020](https://doi.org/10.3389/fpls.2020.562171))
+6. When a phenotype is not the genotype: Implications of phenotype misclassification and pedigree errors in genomics-assisted breeding of sweetpotato *Ipomoea batatas* (L.) Lam.([Gemenet et al., 2020](https://doi.org/10.1101/747469 ))
+7. Quantitative trait loci and differential gene expression analyses reveal the genetic basis for negatively associated beta-carotene and starch content in hexaploid sweetpotato [*Ipomoea batatas* (L.) Lam.] ([Gemenet et al., 2020](https://doi.org/10.1007/s00122-019-03437-7))
+8. Multiple QTL Mapping in Autopolyploids: A Random-Effect Model Approach with Application in a Hexaploid Sweetpotato Full-Sib Population. ([Pereira et al., 2020](https://doi.org/10.1534/genetics.120.303080))
+9. Unraveling the Hexaploid Sweetpotato Inheritance Using Ultra-Dense Multilocus Mapping. ([Mollinari et al., 2020](https://doi.org/10.1534/g3.119.400620)).
 
 # Acknowledgment
 
-This package has been developed as part of the [Genomic Tools for Sweetpotato Improvement project](https://sweetpotatogenomics.cals.ncsu.edu/) (GT4SP) and [SweetGAINS](https://cgspace.cgiar.org/handle/10568/106838), both funded by [Bill & Melinda Gates Foundation](https://www.gatesfoundation.org/).
+This package has been developed as part of the [Genomic Tools for Sweetpotato Improvement project](https://sweetpotatogenomics.cals.ncsu.edu/) (GT4SP) and [SweetGAINS](https://cgspace.cgiar.org/handle/10568/106838), both funded by [Bill & Melinda Gates Foundation](https://www.gatesfoundation.org/). Its continuous improvement is made possible by [Tools for polyploids](https://www.polyploids.org/), funded by USDA NIFA Specialty Crop Research Initiative Award.

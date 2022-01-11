@@ -30,7 +30,7 @@ rf_list_to_matrix(
 )
 }
 \arguments{
-\item{input.twopt}{an object of class \code{poly.est.two.pts.pairwise}}
+\item{input.twopt}{an object of class \code{mappoly.twopt} or \code{mappoly.twopt2}}
 
 \item{thresh.LOD.ph}{LOD score threshold for linkage phase configurations (default = 0)}
 
@@ -73,7 +73,7 @@ A list containing two matrices. The first one contains the
 }
 \description{
 Transforms the recombination fraction list contained in an object
-of class \code{poly.est.two.pts.pairwise} into a recombination
+of class \code{mappoly.twopt} or \code{mappoly.twopt2} into a recombination
 fraction matrix
 }
 \details{
@@ -83,15 +83,15 @@ fraction matrix
     when compared to the second most likely linkage phase configuration.
 }
 \examples{
-    all.mrk<-make_seq_mappoly(hexafake, 1:20)
-    red.mrk<-elim_redundant(all.mrk)
-    unique.mrks<-make_seq_mappoly(red.mrk)
-    all.pairs<-est_pairwise_rf(input.seq = unique.mrks,
+    all.mrk <- make_seq_mappoly(hexafake, 1:20)
+    red.mrk <- elim_redundant(all.mrk)
+    unique.mrks <- make_seq_mappoly(red.mrk)
+    all.pairs <- est_pairwise_rf(input.seq = unique.mrks,
                                ncpus = 1,
-                               verbose=TRUE)
+                               verbose = TRUE)
 
     ## Full recombination fraction matrix
-    mat.full<-rf_list_to_matrix(input.twopt=all.pairs)
+    mat.full <- rf_list_to_matrix(input.twopt = all.pairs)
     plot(mat.full)
     plot(mat.full, type = "lod")
  
