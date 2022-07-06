@@ -1,7 +1,7 @@
 Package: mappoly
 Type: Package
 Title: Genetic Linkage Maps in Autopolyploids
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(person(given = "Marcelo",
                     family = "Mollinari",
                     role = c("aut", "cre"),
@@ -57,19 +57,18 @@ LazyDataCompression: xz
 Depends: R (>= 4.0.0)
 Imports: Rcpp (>= 0.12.6), RcppParallel, RCurl, fields, ggpubr, ggsci,
         rstudioapi, scatterplot3d, dplyr, crayon, cli, magrittr,
-        reshape2, ggplot2, smacof, princurve, dendextend, vcfR, zoo,
-        plotly
+        reshape2, ggplot2, princurve, dendextend, vcfR, zoo, plotly
 LinkingTo: Rcpp, RcppParallel
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 SystemRequirements: C++11, GNU make
 Encoding: UTF-8
-Suggests: testthat, updog, fitPoly, polymapR, AGHmatrix, gatepoints,
-        knitr, rmarkdown
+Suggests: smacof, testthat, updog, fitPoly, polymapR, AGHmatrix,
+        gatepoints, knitr, rmarkdown
 URL: https://github.com/mmollina/MAPpoly
 BugReports: https://github.com/mmollina/MAPpoly/issues
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2022-01-11 01:16:20 UTC; marcelomollinari
+Packaged: 2022-07-06 03:30:11 UTC; mmollin
 Author: Marcelo Mollinari [aut, cre] (<https://orcid.org/0000-0002-7001-8498>),
   Gabriel Gesteira [aut] (<https://orcid.org/0000-0002-4106-7346>),
   Guilhereme Pereira [ctb] (<https://orcid.org/0000-0002-7106-8630>),
@@ -85,4 +84,4 @@ Author: Marcelo Mollinari [aut, cre] (<https://orcid.org/0000-0002-7001-8498>),
   R-core [cph] (C code for MLE optimization in
     src/pairwise_estimation.cpp)
 Repository: CRAN
-Date/Publication: 2022-01-11 09:22:41 UTC
+Date/Publication: 2022-07-06 09:30:12 UTC
