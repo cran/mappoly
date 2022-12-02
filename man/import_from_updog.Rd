@@ -8,6 +8,8 @@ import_from_updog(
   object,
   prob.thres = 0.95,
   filter.non.conforming = TRUE,
+  chrom = NULL,
+  genome.pos = NULL,
   verbose = TRUE
 )
 }
@@ -20,6 +22,13 @@ are considered as missing data for the dosage calling purposes}
 
 \item{filter.non.conforming}{if \code{TRUE} (default) exclude samples with non 
 expected genotypes under random chromosome pairing and no double reduction}
+
+\item{chrom}{a vector indicating which sequence each marker
+belongs. Zero indicates that the marker was not assigned to any
+sequence}
+
+\item{genome.pos}{vector with physical position of the markers into the
+sequence}
 
 \item{verbose}{if \code{TRUE} (default), the current progress is shown; if
 \code{FALSE}, no output is produced}
@@ -94,5 +103,5 @@ Mollinari, M., and Garcia, A.  A. F. (2019) Linkage
     \doi{10.1534/g3.119.400378}
 }
 \author{
-Gabriel Gesteira, \email{gabrielgesteira@usp.br}
+Gabriel Gesteira, \email{gdesiqu@ncsu.edu}
 }

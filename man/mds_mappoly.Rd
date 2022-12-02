@@ -62,9 +62,6 @@ the package \code{MDSmap}, available under GNU GENERAL PUBLIC LICENSE,
 Version 3, at \url{https://CRAN.R-project.org/package=MDSMap}
 }
 \examples{
-\donttest{
-if(requireNamespace("smacof", quietly = TRUE)){
-library("smacof")
     s1 <- make_seq_mappoly(hexafake, 1:20)
     t1 <- est_pairwise_rf(s1, ncpus = 1)
     m1 <- rf_list_to_matrix(t1)
@@ -78,8 +75,6 @@ library("smacof")
     plot(so$seq.num ~ I(so$genome.pos/1e6), 
          xlab = "Genome Position",
          ylab = "MDS position")
-}
-}
 
 }
 \references{
