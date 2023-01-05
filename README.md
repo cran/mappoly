@@ -13,7 +13,7 @@
 
 # MAPpoly <img src="https://raw.githubusercontent.com/mmollina/MAPpoly/main/hex.png" align="right" width="150" />
 
-MAPpoly (v. 0.3.2) is an R package to construct genetic maps in autopolyploids with even ploidy levels. In its current version, MAPpoly can handle ploidy levels up to 8 when using hidden Markov models (HMM) and up to 12 when using the two-point simplification. When dealing with large numbers of markers (> 10,000), we strongly recommend using high-performance computing (HPC).
+MAPpoly (v. 0.3.2) is an R package to construct genetic maps in diploids and autopolyploids with even ploidy levels. In its current version, MAPpoly can handle ploidy levels up to 8 when using hidden Markov models (HMM) and up to 12 when using the two-point simplification. When dealing with large numbers of markers (> 10,000), we strongly recommend using high-performance computing (HPC).
 
 ![](https://raw.githubusercontent.com/mmollina/MAPpoly/master/mappoly.gif)
 
@@ -110,7 +110,7 @@ install.packages('mappoly')
   * [PedigreeSim: Simulation of genetic marker data in diploid and polyploid pedigreed populations.](https://github.com/PBR/pedigreeSim)
 
 * Genotype calling
-  * [ClusterCall: Automated tetraploid genotype calling by hierarchical clustering](https://potatobreeding.cals.wisc.edu/software/)
+  * [ClusterCall: Automated tetraploid genotype calling by hierarchical clustering](https://doi.org/10.1007/s00122-016-2845-5)
   * [fitPoly: Genotype Calling for Bi-Allelic Marker Assays](https://CRAN.R-project.org/package=fitPoly)
   * [polyRAD: Genotype Calling with Uncertainty from Sequencing Data in Polyploids and Diploids](https://CRAN.R-project.org/package=polyRAD)
   * [SuperMASSA: Graphical Bayesian inference tool for genotyping polyploids](https://bitbucket.org/orserang/supermassa)

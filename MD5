@@ -1,6 +1,6 @@
-a7df7b7f8bbcdeba5159caaf73873b59 *DESCRIPTION
+92fc2f6fb97ee9b12a8cb338e72cf3f6 *DESCRIPTION
 5eccd9cda48b41d6492292e3f5f874a6 *NAMESPACE
-9bfd36154622f5a2370ffbbd2c1a3f50 *NEWS.md
+07a8fd58e98f47cf27fa611b75de3849 *NEWS.md
 2180b88a6a7841891ce5c4efb2ab830b *R/RcppExports.R
 ade2cd36232f20736500cfd5b522b413 *R/cache_twopts.R
 e20ee50b105b66ac7b1dd93cff93e87c *R/calc_genoprob.R
@@ -44,7 +44,7 @@ fdc06252e5ed59598d864f5c3c35a8b3 *R/read_mappoly_csv.R
 72b92de1b9c991dcb0741a0474e74993 *R/read_mappoly_vcf.R
 e1a4da93d0bdb89e61408d7ccf056404 *R/reest_map_error.R
 acc1bd848b07c28165e19211f78e70f9 *R/reestimate_map.R
-5fda10456d23327f0ca87697954d3bcf *R/rf_list_to_matrix.R
+6215a6737e639c2b394c0f332a02819a *R/rf_list_to_matrix.R
 e3aa6b5a269ace5a10943e0f1cf0dfd8 *R/segreg_poly.R
 6b66cdebce255af8c4aafc202910528d *R/sim_homologous.R
 5b212f70cebde273959b01fcd1a9cf53 *R/simulation_utils.R
@@ -53,7 +53,7 @@ ae3d761401043aef9e262770da72e648 *R/single_map_hmm.R
 6dacda2a2b7ce19d9c1e4c81e2e6dd73 *R/sysdata.rda
 54f83b619cda1349de1e89af43c8aa10 *R/utils.R
 aa86ca784121b3c34d851c6ca341efe4 *R/zzz.R
-191a537e0127bfe530a7133f0c811c0d *README.md
+bfdeb5b606c1f6009e214cba5e93db44 *README.md
 ea124a494ad7922985532ad3b308e4d5 *build/partial.rdb
 cffd0bd632f089be3155aac9c7aa863f *build/vignette.rds
 d6d36b9a3d5ccf1217a6b6b0f0a9513e *data/datalist
@@ -61,7 +61,7 @@ d6d36b9a3d5ccf1217a6b6b0f0a9513e *data/datalist
 af13bbf32f082454785efce1918e941c *inst/CITATION
 9b3590f74c37184df1e7ba6232ac6e19 *inst/doc/mappoly_startguide.R
 1b67bb8c4cdac93e1fa86cfb8dfe1dfc *inst/doc/mappoly_startguide.Rmd
-a0172c47e0bcf5f299121997352e4869 *inst/doc/mappoly_startguide.html
+6c387c169f536f31a65063af3a65ee3d *inst/doc/mappoly_startguide.html
 a98ec98af89e97fa4edf5d61bf4dc447 *inst/extdata/potato_example.csv
 9c8e2d1268a705e693a9ade01bf33eee *man/add_marker.Rd
 f5e373d86096ab6ca47c6625209b4e25 *man/add_mrk_at_tail_ph_list.Rd
@@ -244,7 +244,6 @@ b9f93970b3530026d6a4c549beec4ef1 *src/hmm_one_parent.cpp
 622685fc4de164cc2c3d2ecc40195d24 *src/read_mappoly_vcf.cpp
 805a1ebc56cec35347869fc24e71f215 *tests/testthat.R
 3b1a61850a90e6347fbefa4415587b46 *tests/testthat/test-2pt.R
-cff71d300377d98c9952c6f44a5ffde5 *tests/testthat/test-cahe_twopts.R
 76fc297371dd8344d25ddc0bbfcff688 *tests/testthat/test-calc_genoprobs.R
 e17f44c99fcde66ec797e2d9eff4c03a *tests/testthat/test-est_hmm_map.R
 9d15bce417e2bfe5534af83483cdabd9 *tests/testthat/test-est_with_probs.R
