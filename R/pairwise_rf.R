@@ -40,25 +40,15 @@
 #' @param ll will return log-likelihood instead of LOD scores. 
 #' (for internal use) 
 #' 
-#' @return An object of class \code{mappoly.twopt} which
-#'     is a list  containing the following components:
-#'     \item{data.name}{name of the object of class
-#'         \code{mappoly.data} with the raw data}
-#'     \item{n.mrk}{number of markers in the sequence}
-#'     \item{seq.num}{a \code{vector} containing the (ordered) indices
-#'         of markers in the sequence, according to the input file}
-#'     \item{pairwise}{a list of size
-#'     \code{choose(length(input.seq$seq.num), 2)}, each of them containing a 
-#'     matrix where the name of the rows have the form x-y, where x and y indicate 
-#'     how many homologues share the same allelic variant in parents P and Q, 
-#'     respectively (see Mollinari and Garcia, 2019 for notation). The first 
-#'     column indicates the LOD Score in relation to the most likely linkage 
-#'     phase configuration. The second column shows the estimated recombination 
-#'     fraction for each configuration, and the third indicates the LOD Score 
-#'     comparing the likelihood under no linkage (r = 0.5) with the estimated 
-#'     recombination fraction (evidence of linkage).}
-#'     \code{chisq.pval.thres}{threshold used to perform the segregation tests}
-#'     \code{chisq.pval}{p-values associated with the performed segregation tests}
+#' @return An object of class \code{mappoly.twopt} which is a list containing the following components:
+#' \describe{
+#'   \item{\code{data.name}}{Name of the object of class \code{mappoly.data} containing the raw data.}
+#'   \item{\code{n.mrk}}{Number of markers in the sequence.}
+#'   \item{\code{seq.num}}{A \code{vector} containing the (ordered) indices of markers in the sequence, according to the input file.}
+#'   \item{\code{pairwise}}{A list of size \code{choose(length(input.seq$seq.num), 2)}, where each element is a matrix. The rows are named in the format x-y, where x and y indicate how many homologues share the same allelic variant in parents P and Q, respectively (see Mollinari and Garcia, 2019 for notation). The first column indicates the LOD Score for the most likely linkage phase configuration. The second column shows the estimated recombination fraction for each configuration, and the third column indicates the LOD Score for comparing the likelihood under no linkage (r = 0.5) with the estimated recombination fraction (evidence of linkage).}
+#'   \item{\code{chisq.pval.thres}}{Threshold used to perform the segregation tests.}
+#'   \item{\code{chisq.pval}}{P-values associated with the performed segregation tests.}
+#' }
 #'
 #' @examples
 #'   ## Tetraploid example (first 50 markers) 
@@ -259,9 +249,18 @@ est_pairwise_rf <- function(input.seq, count.cache = NULL,
                    class = "mappoly.twopt"))
 }
 
-#' Wrapper function to discrete-based pairwise two-point estimation in C++
+#' Parallel Pairwise Discrete Estimation
 #'
-#' @param void internal function to be documented
+#' This function performs parallel pairwise estimation of recombination fractions using discrete dosage scoring via a C++ backend.
+#' @param mrk.pairs A matrix of dimensions 2*N, containing N pairs of markers to be analyzed.
+#' @param input.seq An object of class \code{mappoly.sequence}.
+#' @param geno Genotype matrix.
+#' @param dP Vector of probabilities for the first allele.
+#' @param dQ Vector of probabilities for the second allele.
+#' @param count.cache An object of class \code{cache.info} containing pre-computed genotype frequencies.
+#' @param tol The tolerance level for the estimation accuracy (default is \code{.Machine$double.eps^0.25}).
+#' @param ll Logical; if TRUE, the function returns log-likelihood values instead of LOD scores. For internal use.
+#' @return Depending on the \code{ll} parameter, returns either log-likelihood values or formatted LOD scores from pairwise recombination fraction estimation.
 #' @keywords internal
 #' @export
 paralell_pairwise_discrete <- function(mrk.pairs,
@@ -286,9 +285,18 @@ paralell_pairwise_discrete <- function(mrk.pairs,
   return(lapply(res, format_rf))
 }
 
-#' Wrapper function to probability-based pairwise two-point estimation in C++
+#' Parallel Pairwise Probability Estimation
 #'
-#' @param void internal function to be documented
+#' This function performs parallel pairwise estimation of recombination fractions using probability-based dosage scoring via a C++ backend.
+#' @param mrk.pairs A matrix of dimensions 2*N, containing N pairs of markers to be analyzed.
+#' @param input.seq An object of class \code{mappoly.sequence}.
+#' @param geno Genotype matrix.
+#' @param dP Vector of probabilities for the first allele.
+#' @param dQ Vector of probabilities for the second allele.
+#' @param count.cache An object of class \code{cache.info} containing pre-computed genotype frequencies.
+#' @param tol The tolerance level for the estimation accuracy (default is \code{.Machine$double.eps^0.25}).
+#' @param ll Logical; if TRUE, the function returns log-likelihood values instead of LOD scores. For internal use.
+#' @return Depending on the \code{ll} parameter, returns either log-likelihood values or formatted LOD scores from pairwise recombination fraction estimation.
 #' @keywords internal
 #' @export
 paralell_pairwise_probability <- function(mrk.pairs,
@@ -315,8 +323,6 @@ paralell_pairwise_probability <- function(mrk.pairs,
 }
 
 #' Format results from pairwise two-point estimation in C++
-#'
-#' @param void internal function to be documented
 #' @keywords internal
 format_rf <- function(res) {
   x <- res
@@ -467,7 +473,7 @@ est_pairwise_rf2 <- function(input.seq,
                                          count.matrix.number = count.matrix.number,
                                          count.matrix.pos = count.matrix.pos,
                                          count.matrix.length = count.matrix.length,
-                                         tol = tol, threads = ncpus)
+                                         tol = tol)
   res[res == -1] = NA
   colnames(res) = c("Sh_P1","Sh_P2","rf","LOD_rf","LOD_ph")
   if (verbose) {
@@ -492,11 +498,8 @@ est_pairwise_rf2 <- function(input.seq,
 }
 
 #' Wrapper function to discrete-based pairwise two-point estimation in C++
-#'
-#' @param void internal function to be documented
 #' @keywords internal
 #' @importFrom RcppParallel RcppParallelLibs
-#' @export
 paralell_pairwise_discrete_rcpp <- function(mrk.pairs,
                                             m,
                                             geno,
@@ -508,8 +511,7 @@ paralell_pairwise_discrete_rcpp <- function(mrk.pairs,
                                             count.matrix.number,
                                             count.matrix.pos,
                                             count.matrix.length,
-                                            tol = .Machine$double.eps^0.25,
-                                            threads)
+                                            tol = .Machine$double.eps^0.25)
 {
   res <- .Call("pairwise_rf_estimation_disc_rcpp",
                as.matrix(mrk.pairs),
@@ -524,7 +526,6 @@ paralell_pairwise_discrete_rcpp <- function(mrk.pairs,
                count.matrix.pos,
                count.matrix.length,
                tol = tol,
-               threads = threads,
                PACKAGE = "mappoly")
   return(res)
   ## return(lapply(res, format_rf))

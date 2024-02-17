@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -15,54 +15,54 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #  print(dat, detailed = T)
 #  plot(dat)
 
-## ---- eval=FALSE, filter_ind_donot_eval---------------------------------------
+## ----eval=FALSE, filter_ind_donot_eval----------------------------------------
 #  dat <- filter_individuals(dat)
 
-## ---- filter------------------------------------------------------------------
+## ----filter-------------------------------------------------------------------
 #  dat <- filter_missing(dat, type = "marker", filter.thres = .05)
 #  dat <- filter_missing(dat, type = "individual", filter.thres = .05)
 
-## ---- filter_seg--------------------------------------------------------------
+## ----filter_seg---------------------------------------------------------------
 #  seq.filt <- filter_segregation(dat, chisq.pval.thres = 0.05/dat$n.mrk)
 #  seq.filt <- make_seq_mappoly(seq.filt)
 #  seq.red  <- elim_redundant(seq.filt)
 
-## ----  make_seq---------------------------------------------------------------
+## ----make_seq-----------------------------------------------------------------
 #  seq.init <- make_seq_mappoly(seq.red)
 #  plot(seq.init)
 
-## ----  geno_ord---------------------------------------------------------------
+## ----geno_ord-----------------------------------------------------------------
 #  go <- get_genomic_order(input.seq = seq.init) ## get genomic order of the sequence
 #  plot(go)
 
-## ---- twopt_show, eval=FALSE--------------------------------------------------
+## ----twopt_show, eval=FALSE---------------------------------------------------
 #  ncores <- parallel::detectCores() - 1
 #  tpt <- est_pairwise_rf2(seq.init, ncpus = ncores)
 #  m <- rf_list_to_matrix(tpt) ## converts rec. frac. list into a matrix
 #  sgo <- make_seq_mappoly(go) ## creates a sequence of markers in the genome order
 #  plot(m, ord = sgo, fact = 5) ## plots a rec. frac. matrix using the genome order, averaging neighbor cells in a 5 x 5 grid
 
-## ---- group-------------------------------------------------------------------
+## ----group--------------------------------------------------------------------
 #  g <- group_mappoly(m, expected.groups = 12, comp.mat = TRUE)
 #  plot(g)
 #  g
 
-## ---- select_group------------------------------------------------------------
+## ----select_group-------------------------------------------------------------
 #  s1 <- make_seq_mappoly(g, 1, ## Select LG1
 #                         genomic.info = 1)
 #  m1 <- make_mat_mappoly(m, s1)
 
-## ---- order_mds---------------------------------------------------------------
+## ----order_mds----------------------------------------------------------------
 #  mds.o1 <- mds_mappoly(input.mat = m1)
 #  s1.mds <- make_seq_mappoly(mds.o1)
 #  plot(m1, ord = s1.mds)
 
-## ----  order_genome-----------------------------------------------------------
+## ----order_genome-------------------------------------------------------------
 #  gen.o1 <- get_genomic_order(s1)
 #  s1.gen <- make_seq_mappoly(gen.o1)
 #  plot(m1, ord = s1.gen)
 
-## ---- map_lg1, results = FALSE, eval = FALSE----------------------------------
+## ----map_lg1, results = FALSE, eval = FALSE-----------------------------------
 #  tpt1 <- est_pairwise_rf(s1.mds, ncpus = ncores)
 #  lg1.map <- est_rf_hmm_sequential(input.seq = s1.mds,
 #                                  start.set = 3,
@@ -103,11 +103,11 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 #  h1 <- calc_homologprob(g1)
 #  plot(h1, lg = 1, ind = 10)
 
-## ---- meiosis_evaluation------------------------------------------------------
+## ----meiosis_evaluation-------------------------------------------------------
 #  p1 = calc_prefpair_profiles(g1)
 #  plot(p1, min.y.prof = 0.25, max.y.prof = 0.4, P1 = "Atlantic", P2 = "B1829.5")
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  export_map_list(lg1.map.up, file = "output_file.csv")
 
 ## -----------------------------------------------------------------------------

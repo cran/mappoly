@@ -16,12 +16,8 @@ paralell_pairwise_discrete_rcpp(
   count.matrix.number,
   count.matrix.pos,
   count.matrix.length,
-  tol = .Machine$double.eps^0.25,
-  threads
+  tol = .Machine$double.eps^0.25
 )
-}
-\arguments{
-\item{void}{internal function to be documented}
 }
 \description{
 Wrapper function to discrete-based pairwise two-point estimation in C++

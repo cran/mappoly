@@ -13,15 +13,13 @@
 #' @keywords internal
 #'
 #' @useDynLib mappoly
-get_counts_one_parent <- function(ploidy, gen.par.mk1, gen.par.mk2, gen.prog.mk1, gen.prog.mk2) {
-    res <- .Call("get_counts_one_parent_cpp", as.numeric(ploidy), as.numeric(gen.par.mk1), as.numeric(gen.par.mk2), as.numeric(gen.prog.mk1), as.numeric(gen.prog.mk2), 
+get_counts_single_parent <- function(ploidy, gen.par.mk1, gen.par.mk2, gen.prog.mk1, gen.prog.mk2) {
+    res <- .Call("get_counts_single_parent_cpp", as.numeric(ploidy), as.numeric(gen.par.mk1), as.numeric(gen.par.mk2), as.numeric(gen.prog.mk1), as.numeric(gen.prog.mk2), 
         as.numeric(rep(0, ploidy + 1)), PACKAGE = "mappoly")
     return(res[[6]])
 }
 
 #' Counts for recombinant classes
-#'
-#' @param void internal function to be documented
 #' @keywords internal
 get_counts_two_parents <- function(x = c(2, 2), ploidy, p.k, p.k1, q.k, q.k1, verbose = FALSE, joint.prob = FALSE) {
     gen.prog.mk1 <- x[1]
@@ -55,8 +53,8 @@ get_counts_two_parents <- function(x = c(2, 2), ploidy, p.k, p.k1, q.k, q.k1, ve
     for (i in 1:nrow(pos.k)) {
         b <- NULL
         for (j in 1:nrow(pos.k1)) {
-            a1 <- get_counts_one_parent(ploidy, p.k, p.k1, pos.k[i, 1], pos.k1[j, 1])
-            a2 <- get_counts_one_parent(ploidy, q.k, q.k1, pos.k[i, 2], pos.k1[j, 2])
+            a1 <- get_counts_single_parent(ploidy, p.k, p.k1, pos.k[i, 1], pos.k1[j, 1])
+            a2 <- get_counts_single_parent(ploidy, q.k, q.k1, pos.k[i, 2], pos.k1[j, 2])
             r <- rbind(r, kronecker(a1[-(2 + ploidy/2)], a2[-(2 + ploidy/2)]))
             b <- c(b, a1[2 + ploidy/2] * a2[2 + ploidy/2])
         }
@@ -74,8 +72,6 @@ get_counts_two_parents <- function(x = c(2, 2), ploidy, p.k, p.k1, q.k, q.k1, ve
 }
 
 #' Counts for recombinant classes
-#'
-#' @param void internal function to be documented
 #' @keywords internal
 get_counts <- function(ploidy, P.k = NULL, P.k1 = NULL, Q.k = NULL, Q.k1 = NULL, verbose = FALSE, make.names = FALSE, joint.prob = FALSE) {
     if (verbose) {
@@ -133,8 +129,6 @@ get_counts <- function(ploidy, P.k = NULL, P.k1 = NULL, Q.k = NULL, Q.k1 = NULL,
 #' associated names in the matrices indicates the number of shared
 #' homologous chromosomes. The row names indicates the dosage in loci
 #' k and k+1 respectively
-#'
-#' @param void internal function to be documented
 #' @keywords internal
 get_counts_all_phases <- function(x, ploidy, verbose = FALSE, make.names = FALSE, joint.prob = FALSE) {
     pk <- x[1]

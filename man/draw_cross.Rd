@@ -6,16 +6,13 @@
 \usage{
 draw_cross(
   ploidy,
-  rf.vec = NULL,
+  dist.vec = NULL,
   hom.allele.p,
   hom.allele.q,
   file = NULL,
   width = 12,
   height = 6
 )
-}
-\arguments{
-\item{void}{internal function to be documented}
 }
 \description{
 This function draws the parental map (including the linkage

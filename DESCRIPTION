@@ -1,7 +1,7 @@
 Package: mappoly
 Type: Package
 Title: Genetic Linkage Maps in Autopolyploids
-Version: 0.3.3
+Version: 0.4.0
 Authors@R: c(person(given = "Marcelo",
                     family = "Mollinari",
                     role = c("aut", "cre"),
@@ -12,6 +12,21 @@ Authors@R: c(person(given = "Marcelo",
                     role = "aut",
                     email = "gdesiqu@ncsu.edu",
                     comment = c(ORCID="0000-0002-4106-7346")),
+            person(given = "Cristiane",
+                    family = "Taniguti",
+                    role = "aut",
+                    email = "chtaniguti@tamu.edu",
+                    comment = c(ORCID="0000-0002-2021-6883")),
+            person(given = "Jeekin",
+                    family = "Lau",
+                    role = "aut",
+                    email = "jzl0026@tamu.edu",
+                    comment = c(ORCID="0000-0003-1114-6892")),
+            person(given = "Oscar",
+                    family = "Riera-Lizarazu",
+                    role = "ctb",
+                    email = "o.riera-lizarazu@tamu.edu",
+                    comment = c(ORCID="0000-0002-7477-4063")),
             person(given = "Guilhereme",
                     family = "Pereira",
                     role = "ctb",
@@ -60,18 +75,21 @@ Imports: Rcpp (>= 0.12.6), RcppParallel, RCurl, fields, ggpubr, ggsci,
         rstudioapi, plot3D, dplyr, crayon, cli, magrittr, reshape2,
         ggplot2, smacof, princurve, dendextend, vcfR, zoo, plotly
 LinkingTo: Rcpp, RcppParallel
-RoxygenNote: 7.2.3
-SystemRequirements: C++11, GNU make
+RoxygenNote: 7.3.1
+SystemRequirements: GNU make
 Encoding: UTF-8
 Suggests: testthat, updog, fitPoly, polymapR, AGHmatrix, gatepoints,
-        knitr, rmarkdown
+        knitr, rmarkdown, stringr
 URL: https://github.com/mmollina/MAPpoly
 BugReports: https://github.com/mmollina/MAPpoly/issues
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2023-01-03 00:04:36 UTC; mmollin
+Packaged: 2024-02-17 17:13:23 UTC; mmollin
 Author: Marcelo Mollinari [aut, cre] (<https://orcid.org/0000-0002-7001-8498>),
   Gabriel Gesteira [aut] (<https://orcid.org/0000-0002-4106-7346>),
+  Cristiane Taniguti [aut] (<https://orcid.org/0000-0002-2021-6883>),
+  Jeekin Lau [aut] (<https://orcid.org/0000-0003-1114-6892>),
+  Oscar Riera-Lizarazu [ctb] (<https://orcid.org/0000-0002-7477-4063>),
   Guilhereme Pereira [ctb] (<https://orcid.org/0000-0002-7106-8630>),
   Augusto Garcia [ctb] (<https://orcid.org/0000-0003-0634-3277>),
   Zhao-Bang Zeng [ctb] (<https://orcid.org/0000-0002-3115-1149>),
@@ -85,4 +103,4 @@ Author: Marcelo Mollinari [aut, cre] (<https://orcid.org/0000-0002-7001-8498>),
   R-core [cph] (C code for MLE optimization in
     src/pairwise_estimation.cpp)
 Repository: CRAN
-Date/Publication: 2023-01-05 20:10:02 UTC
+Date/Publication: 2024-02-17 23:30:02 UTC
